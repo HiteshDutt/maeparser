@@ -54,7 +54,7 @@ jobs:
         set PATH=%PATH%;"${{github.workspace}}\boost";"${{github.workspace}}\boost\libs"
         setx /M PATH "%PATH%"
         Write-Host "Boost libraries installed!" -ForegroundColor Green
-        cd ${{github.workspace}}\boost"
+        cd "${{github.workspace}}\boost"
     
     - name: Print directory structure
       uses: FiorelaCiroku/XDTesting-Print-Directory-Structure@v1.0.2
