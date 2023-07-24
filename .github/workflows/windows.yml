@@ -50,13 +50,13 @@ jobs:
 
             Write-Host "Downloading x64..."
             $exePath = "${{github.workspace}}\boost.zip"
-            (New-Object Net.WebClient).DownloadFile('https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.zip', $exePath)
+            (New-Object Net.WebClient).DownloadFile(${{env.BOOST_DOWNLOAD_LINK}}, $exePath)
 
             Write-Host "EXPAND ARCHIVE"
             Expand-Archive -Path ${{github.workspace}}\boost.zip -DestinationPath ${{github.workspace}}\boost
         }
         Write-Host "Updating Path Variables"
-        set PATH=%PATH%;${{github.workspace}}\boost
+        set PATH=%PATH%;"${{github.workspace}}\boost"
         setx /M PATH "%PATH%"
         Write-Host "Boost libraries installed!" -ForegroundColor Green
     - name: Configure CMake
