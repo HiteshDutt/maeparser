@@ -54,14 +54,11 @@ jobs:
         set PATH=%PATH%;"${{github.workspace}}\boost";"${{github.workspace}}\boost\libs"
         setx /M PATH "%PATH%"
         Write-Host "Boost libraries installed!" -ForegroundColor Green
-    - name: List Files
-      id: list-files
-      uses: mirko-felice/list-files-action@v3.0.5
-      with:
-        repo: ${{ github.repository }}
-        ref: ${{ github.ref }}
-        path: "."
-        ext: ".cpp"
+        cd ${{github.workspace}}\boost"
+    
+    - name: Print directory structure
+      uses: FiorelaCiroku/XDTesting-Print-Directory-Structure@v1.0.2
+
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
