@@ -40,14 +40,11 @@ jobs:
     - name: Build Boost
       uses: egor-tensin/build-boost@v1
       with:
-    # Version to build
         version: 1.71.0
-    # Space-separated list of libraries
         libraries: filesystem program_options system
-    # Target platform
         platform: x64
-    # Configuration to build
         configuration: Release
+        toolset: msvc
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
