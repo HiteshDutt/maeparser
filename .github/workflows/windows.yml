@@ -41,7 +41,7 @@ jobs:
       uses: egor-tensin/build-boost@v1
       with:
         version: 1.71.0
-        toolset: msvc
+        toolset: vs
         libraries: filesystem program_options system
         platform: x64
         configuration: Release
