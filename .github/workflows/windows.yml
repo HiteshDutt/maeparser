@@ -46,7 +46,7 @@ jobs:
 
             Write-Host "Downloading x64..."
             $exePath = "${{github.workspace}}\boost.zip"
-            (New-Object Net.WebClient).DownloadFile(${{vars.BOOST_DOWNLOAD_LINK}}, $exePath)
+            (New-Object Net.WebClient).DownloadFile("${{vars.BOOST_DOWNLOAD_LINK}}", $exePath)
 
             Write-Host "EXPAND ARCHIVE"
             Expand-Archive -Path ${{github.workspace}}\boost.zip -DestinationPath ${{github.workspace}}\boost
