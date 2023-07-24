@@ -53,7 +53,7 @@ jobs:
             (New-Object Net.WebClient).DownloadFile('https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.zip', $exePath)
 
             Write-Host "EXPAND ARCHIVE"
-            Expand-Archive -Path ${{github.workspace}}\boost_1_82_0.zip -DestinationPath ${{github.workspace}}\boost
+            Expand-Archive -Path ${{github.workspace}}\boost.zip -DestinationPath ${{github.workspace}}\boost
         }
         Write-Host "Updating Path Variables"
         set PATH=%PATH%;${{github.workspace}}\boost
