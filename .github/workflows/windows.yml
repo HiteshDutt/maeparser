@@ -41,7 +41,6 @@ jobs:
       run: |
         Write-Host "Installing boost" -ForegroundColor Cyan
         Measure-Command {
-            $currentPath = pwd
             Write-Host "Installing boost" -ForegroundColor Cyan
 
             Write-Host "Downloading x64..."
@@ -50,14 +49,19 @@ jobs:
 
             Write-Host "EXPAND ARCHIVE"
             Expand-Archive -Path ${{github.workspace}}\boost.zip -DestinationPath ${{github.workspace}}\boost
-            
-            cd ${{github.workspace}}\boost
-            Get-ChildItem | tree
         }
         Write-Host "Updating Path Variables"
         set PATH=%PATH%;"${{github.workspace}}\boost";"${{github.workspace}}\boost\libs"
         setx /M PATH "%PATH%"
         Write-Host "Boost libraries installed!" -ForegroundColor Green
+    - name: List Files
+      id: list-files
+      uses: mirko-felice/list-files-action@v3.0.5
+      with:
+        repo: ${{ github.repository }}
+        ref: ${{ github.ref }}
+        path: "."
+        ext: ".cpp"
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
