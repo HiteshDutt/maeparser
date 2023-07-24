@@ -50,6 +50,8 @@ jobs:
 
             Write-Host "EXPAND ARCHIVE"
             Expand-Archive -Path ${{github.workspace}}\boost.zip -DestinationPath ${{github.workspace}}\boost
+            
+            dir ${{github.workspace}}\boost
         }
         Write-Host "Updating Path Variables"
         set PATH=%PATH%;"${{github.workspace}}\boost"
