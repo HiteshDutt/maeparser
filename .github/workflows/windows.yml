@@ -41,6 +41,7 @@ jobs:
       run: |
         Write-Host "Installing boost" -ForegroundColor Cyan
         Measure-Command {
+            $currentPath = pwd
             Write-Host "Installing boost" -ForegroundColor Cyan
 
             Write-Host "Downloading x64..."
@@ -50,7 +51,8 @@ jobs:
             Write-Host "EXPAND ARCHIVE"
             Expand-Archive -Path ${{github.workspace}}\boost.zip -DestinationPath ${{github.workspace}}\boost
             
-            dir ${{github.workspace}}\boost
+            cd ${{github.workspace}}\boost
+            Get-ChildItem | tree
         }
         Write-Host "Updating Path Variables"
         set PATH=%PATH%;"${{github.workspace}}\boost";"${{github.workspace}}\boost\libs"
