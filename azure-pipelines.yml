@@ -2,7 +2,19 @@ trigger:
   - master
   - dev/*
 
-jobs:
+jobs:  
+  - job: Windows_VS2019_x64
+    timeoutInMinutes: 90
+    pool:
+      vmImage: windows-2019
+    variables:
+      compiler: vs2019_win-64
+      boost_version: 1.67.0
+      number_of_cores: "%NUMBER_OF_PROCESSORS%"
+      python_name: python37
+      shared_lib: ON
+    steps:
+      - template: .azure-pipelines/vs_build.yml
   - job: Windows_VS2019_x64_static
     timeoutInMinutes: 90
     pool:
