@@ -26,6 +26,10 @@ steps:
       cd build
       cmake --build . --config Release -j $(number_of_cores)
     displayName: Build
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: Drop'
+    inputs:
+      PathtoPublish: './build'
   - script: |
       call activate maeparser_build
       cd build
