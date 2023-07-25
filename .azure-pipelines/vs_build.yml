@@ -30,7 +30,6 @@ steps:
     inputs:
       solution: '**\*.sln'
       vsVersion: '17.0'
-      platform: 'any cpu'
       configuration: 'release'
       maximumCpuCount: true
       restoreNugetPackages: true
