@@ -26,6 +26,15 @@ steps:
       cd build
       cmake --build . --config Release -j $(number_of_cores)
     displayName: Build
+  - task: VSBuild@1
+    inputs:
+      solution: '**\*.sln'
+      vsVersion: '17.0'
+      platform: 'any cpu'
+      configuration: 'release'
+      maximumCpuCount: true
+      restoreNugetPackages: true
+      createLogFile: true 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: Drop'
     inputs:
