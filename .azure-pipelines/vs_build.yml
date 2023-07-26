@@ -29,7 +29,7 @@ steps:
   - task: VSBuild@1
     inputs:
       solution: '**\*.sln'
-      vsVersion: '17.0'
+      vsVersion: '16.0'
       configuration: 'release'
       maximumCpuCount: true
       restoreNugetPackages: true
