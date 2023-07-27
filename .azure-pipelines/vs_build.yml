@@ -30,7 +30,6 @@ steps:
     inputs:
       solution: '**\*.sln'
       vsVersion: '16.0'
-      configuration: 'Debug'
       maximumCpuCount: true
       restoreNugetPackages: true
       createLogFile: true 
